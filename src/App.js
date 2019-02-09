@@ -1,25 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//to start the project, i started with ´npm create-react-app´
+//this gived me a template of a simple app in react
+//i just deleted the things that i considered were not necesary for this case.
 
-class App extends Component {
+import React, { Component } from 'react';
+
+class App extends Component { //Main class
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       
       </div>
     );
   }
