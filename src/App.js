@@ -30,14 +30,14 @@ handleCloseModal=(event)=>{
   this.setState({modalvisible:false})
 }
 
-  //adding task to array
+  //adding user to array
   handleuser=(user)=>{
   this.setState({data_user:[...this.state.data_user,user]})
   console.log(this.state.data_user)
 }
-
+//adding task to array
   handletask = (task)=>{
-    
+    let taskObject={id:"", task:task, user:"", state:1} 
     this.setState({data_task:[...this.state.data_task,task]})
     console.log(this.state.data_task)
     //console.log(task) reviewing task
