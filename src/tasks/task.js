@@ -5,7 +5,7 @@ const Task =(props)=>{
         <div>
             <p>{props.item}</p>
             <p>Maria</p>
-            <button>Edit</button>
+            <button onClick={props.openModal}>Edit</button>
             <button>Open</button>
         </div>
     )

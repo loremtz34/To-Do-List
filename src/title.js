@@ -1,10 +1,10 @@
 import React from 'react';
 
 //Here we create the title of the page
-const title= ()=>{
+const title= (props)=>{
     return(
         <div>
-            <h1>TO DO CONDOR TASKS</h1>
+            <h1>{props.Text}</h1>
         </div>
     );    
 };
