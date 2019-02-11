@@ -4,11 +4,10 @@ import User from './user/user';
 
 const List =(props)=>{
     if(!props.type.localeCompare("task")){
-        console.log("ENTROOO")
         return(
             <div>
                 {props.data.map((item) =>{
-                    return <Task item={item} openModal={props.openModal}/>
+                    return <Task key={item.id} item={item} openModal={props.openModal} />
                 })
                 }
             </div>
@@ -18,7 +17,7 @@ const List =(props)=>{
         return(
             <div>
                 {props.data.map((item) =>{
-                    return <User item={item}/>
+                    return <User  key={item.id} item={item}/>
                 })
                 }
             </div>

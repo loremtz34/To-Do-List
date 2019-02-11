@@ -21,8 +21,8 @@ class Form extends React.Component {
         if(this.input.value !==""){
             this.props.addTask(this.state.new_task)
             this.setState({new_task:""}) // state becomes 0 
-           // console.log(this.input.value)
-            this.input.value="";
+            console.log(this.input.value)
+           this.input.value="";
         }
     }
 

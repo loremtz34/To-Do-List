@@ -4,16 +4,32 @@ import '../app.css';
 const modal= (props)=>{
     return(
         <div className="Modal">
-        <select name="OS">
-            <option value="1">Windows Vista</option> 
-            <option value="2">Windows 7</option> 
-            <option value="3">Windows XP</option>
-            <option value="10">Fedora</option> 
-            <option value="11">Debian</option> 
-            <option value="12">Suse</option> 
-        </select>
-        <button>wenas</button>
-        <button onClick={props.modalClose}>CERRAR</button>
+        <h1>id {props.idSelected}</h1>
+        <div>
+            <label>Change task name: </label>
+            <input type="text"/>
+        </div><br></br>
+        <div>
+            <label>Add User: </label>
+            <select name="2">
+                {
+                    props.data.map((item) => {
+                        return <option key={item.id}>{item.name}</option> 
+                    })
+                }
+            </select>
+        </div><br></br>
+        <div>
+            <label>Edit State: </label>
+            <select name="OS">
+                <option value="1">Open</option> 
+                <option value="2">In-Progress</option> 
+                <option value="3">Completed</option>
+                <option value="10">Archived</option>
+            </select>
+        </div><br></br>
+        <button>Save</button>
+        <button onClick={props.modalClose}>Close</button>
         </div>
     );
 }
