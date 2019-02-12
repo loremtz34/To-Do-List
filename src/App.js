@@ -17,7 +17,6 @@ import axios from 'axios';
 
 class App extends Component { //Main class
   
-
   constructor(){
   super()
   this.state = {
@@ -25,14 +24,18 @@ class App extends Component { //Main class
       data_user: [],
       modalvisible:false,
       id_task_object:0,
-      id_task_selected:0
+      id_task_selected:0,
+      url_base: 'http://localhost:3000'
+  }
+  }
+
+  handlesaveinfo=(user)=>{
+
 
   }
 
-  }
-  
  handleaddtasks = (task)=>{
-    axios.post('http://192.168.1.32:3000/tasks',{
+    axios.post( this.state.url_base +'/tasks',{
       task, 
       status:"1"
     })
@@ -43,7 +46,7 @@ class App extends Component { //Main class
   }
 
   handleaddusers =(name)=>{
-    axios.post('http://192.168.1.32:3000/users',{
+    axios.post(this.state.url_base +'/users',{
       name
     }).then((res)=>{
       this.setState({data_user:[...this.state.data_user,...res.data]})
@@ -52,13 +55,12 @@ class App extends Component { //Main class
 
   async componentWillMount(){
 
-   const [{data: tasks}, { data: users}]= await  Promise.all([axios.get('http://192.168.1.32:3000/tasks'), 
-    axios.get('http://192.168.1.32:3000/users')
+   const [{data: tasks}, { data: users}]= await  Promise.all([axios.get(this.state.url_base +'/tasks'), 
+    axios.get(this.state.url_base +'/users')
   
   ])
   this.setState({data_task: tasks, data_user: users})
   }
-
 
 // to open modal  
 handleOpenModal=(id)=>{
@@ -82,7 +84,6 @@ handleCloseModal=(event)=>{
     this.setState({data_task:[...this.state.data_task,taskObject], id_task_object:new_id})
     //console.log(task) reviewing task
   }
-
    
   //title
   //adding task to array in main
@@ -97,7 +98,12 @@ handleCloseModal=(event)=>{
           
           <Title Text={"To-Do List"}></Title>
           <Form addTask={this.handleaddtasks}></Form>
-          <List type={"task"} data={this.state.data_task} openModal={this.handleOpenModal} idSelected={this.handleTaskSelected}></List> 
+          <List 
+          type={"task"} 
+          data={this.state.data_task} 
+          openModal={this.handleOpenModal} 
+          idSelected={this.handleTaskSelected}
+          data_user={this.state.data_user}></List> 
       </div>
 
       <div className="child_div">

@@ -7,12 +7,15 @@ const List =(props)=>{
         return(
             <div>
                 {props.data.map((item) =>{
-                    return <Task key={item.id} item={item} openModal={props.openModal} />
+                    return <Task 
+                            key={item.id} 
+                            item={item} 
+                            openModal={props.openModal} 
+                            data_user={props.data_user}/>
                 })
                 }
             </div>
         )
-
     }else{
         return(
             <div>
@@ -22,7 +25,6 @@ const List =(props)=>{
                 }
             </div>
         )
-
     }
 }
 
