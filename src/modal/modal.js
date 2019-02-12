@@ -1,20 +1,24 @@
 import React from 'react';
 import '../app.css';
 
+
 const modal= (props)=>{
+    //let default_user= props.data_user.find(item => item.id === props.task_selected.user)
+    //console.log(default_user)
+    
     return(
         <div className="Modal">
-        <h1>id {props.idSelected}</h1>
+        <h1>id {props.task_selected.id}</h1>
         <div>
             <label>Change task name: </label>
-            <input type="text"/>
+            <input ref= {input=> this.input= input} type="text"/>
         </div><br></br>
         <div>
             <label>Add User: </label>
-            <select name="2">
+            <select name="2" >
                 {
-                    props.data.map((item) => {
-                        return <option key={item.id}>{item.name}</option> 
+                    props.data_user.map((item) => {
+                        return <option value={item.id} key={item.id}>{item.name}</option> 
                     })
                 }
             </select>

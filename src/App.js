@@ -23,15 +23,25 @@ class App extends Component { //Main class
       data_task: [],
       data_user: [],
       modalvisible:false,
-      id_task_object:0,
       id_task_selected:0,
-      url_base: 'http://localhost:3000'
+      task_object_modal:{},
+      url_base: 'http://localhost:3000',
+      array_search_task:[]
   }
   }
 
-  handlesaveinfo=(user)=>{
+  handlesearch= ()=>{
+    
+  }
 
-
+  handlesaveinfo=(task,id_user,id_task,state)=>{
+    let array_task=this.state.data_task.filter(item =>{ return item.id !== id_task})
+    axios.put(this.state.url_base+"/tasks"+id_task,{
+      task,
+      user:id_user,
+      status:state
+    }).then( res =>{ this.setState({data_task:[...array_task,res]})})
+    .catch((err)=>console.log(err))
   }
 
  handleaddtasks = (task)=>{
@@ -64,7 +74,8 @@ class App extends Component { //Main class
 
 // to open modal  
 handleOpenModal=(id)=>{
-  this.setState({modalvisible:true,id_task_selected:id })
+  let task = this.state.data_task.find(item => item.id === id )
+  this.setState({modalvisible:true,id_task_selected:id, task_object_modal:task })
 }
 
 //to close modal
@@ -76,14 +87,7 @@ handleCloseModal=(event)=>{
   handleuser=(user)=>{
   this.setState({data_user:[...this.state.data_user,user]})
 }
-//adding task to array
-  handletask = (task)=>{
-    let taskObject={id:this.state.id_task_object, task:task, user:"", state:1} 
-    let new_id= this.state.id_task_object +1;
-    
-    this.setState({data_task:[...this.state.data_task,taskObject], id_task_object:new_id})
-    //console.log(task) reviewing task
-  }
+
    
   //title
   //adding task to array in main
@@ -104,6 +108,7 @@ handleCloseModal=(event)=>{
           openModal={this.handleOpenModal} 
           idSelected={this.handleTaskSelected}
           data_user={this.state.data_user}></List> 
+
       </div>
 
       <div className="child_div">
@@ -116,8 +121,9 @@ handleCloseModal=(event)=>{
         <ModalContainer>
           <Modal 
             modalClose={this.handleCloseModal} 
-            idSelected={this.state.id_task_selected}
-            data={this.state.data_user}>
+            task_selected={this.state.task_object_modal}
+            data_user={this.state.data_user}
+            onsave_user={this.handlesaveinfo}>
               <h1>ESTO ES UN MODAL</h1>
           </Modal>
         </ModalContainer>
