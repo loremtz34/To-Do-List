@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TO-DO LIST
+For this test i used visual studio code, for the backend: node.js, for the front-end: reactjs. (i think i tried my best!)
 
-## Available Scripts
+For the making of the api in node.js, i heavely based myself in this link, only because i don't have the knowledge of node.js or other tecnology for backend: https://www.codementor.io/julieisip/learn-rest-api-using-express-js-and-mysql-db-ldflyx8g2 .this doesn't mean i copy and paste exacly like it is there, i had to modify a lot of things, besides i had to make other things from scratch, you get the idea. 
 
-In the project directory, you can run:
+For the making of the front-end i based myself in this links:
+    -https://codepen.io/arshdkhn1/pen/apoWJe (in the making of To-Do)
+    -https://github.com/reactjs/react-modal (in the making of modal in react)
 
-### `npm start`
+### Requirements
+  
+  - First you have to make sure that you have installed node.js, MySQL and any code editor that you like.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# api-to-do-list
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Sample application for Condor.
 
-### `npm test`
+## How to install api
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repo using HTTPS or SSH in a new directory and get into it.
 
-### `npm run build`
+```
+git clone https://github.com/loremtz34/api-to-do-list.git
+git clone git@github.com:loremtz34/api-to-do-list.git
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd api-to-do-list/
+```
+Install NPM and NodeJS and make sure that `node` and `npm` are available in your preferred command line (cmd, powershell, git bash, bash, etc).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Then, install all of the dependencies using npm.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install
+```
 
-### `npm run eject`
+## Configure
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Change the MySQL connection configuration in `db.js` and `server.js` to match your database server IP or hostname, user, password and name of the database we will create later.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'super-strong-password',
+    database : 'to-do-list'
+});
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Database
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Connect to your database server using whichever tool you like the most, I'm using phpmyadmin. Then, create a new database called `to-do-list` and import the `to-do-list.sql` file. This will create our tables and fill them with sample data.
 
-## Learn More
+## Running
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Finally, run the backend using `node server.js`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How to install front-end
 
-### Code Splitting
+Clone the repo using HTTPS or SSH in a new directory and get into it.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```
+git clone https://github.com/loremtz34/To-Do-List
+git clone git@github.com:loremtz34/To-Do-List.git
 
-### Analyzing the Bundle Size
+run the command 'npm install' to install dependencies 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Running
+Finally, run the front end using 'npm start'
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
