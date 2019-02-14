@@ -1,17 +1,9 @@
-.div {
-  width: 50%;
-  height: 100%;
-  margin-right: 10px;
-  margin-left: 100px;
-  float: left;
-  padding: 20px;
-}
-.child_div {
-  float: left;
-  margin-right: 10px;
-  margin-top: 20px;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* fraction*/
   margin-left: 100px;
 }
+
 .Modal {
   max-width: 768px;
   width: 100%;

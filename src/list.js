@@ -11,7 +11,8 @@ const List =(props)=>{
                             key={item.id} 
                             item={item} 
                             openModal={props.openModal} 
-                            data_user={props.data_user}/>
+                            data_user={props.data_user}
+                            handleState={props.handleState}/>
                 })
                 }
             </div>

@@ -12,6 +12,7 @@ import ModalContainer from './modal/modalcontainer';
 import Modal from './modal/modal';
 import logo from './logo-dark.svg';
 import axios from 'axios';
+import Search from './search';
 //import TopNavBar from './topnavbar';
 //import api from './data.json';
 
@@ -30,17 +31,39 @@ class App extends Component { //Main class
   }
   }
 
-  handlesearch= ()=>{
-    
+  handleShowState(value){
+    switch (value) {
+      case 1:
+        return "open";
+      case 2:
+        return "in progress";
+      case 3:
+        return "completed";
+      case 4:
+        return "archived";
+      default:
+        return "open";
+    }
   }
 
-  handlesaveinfo=(task,id_user,id_task,state)=>{
+  handlesearch= (input)=>{
+   axios.get(this.state.url_base + '/search/'+ input)
+  .then ((res)=>{
+    this.setState({array_search_task:res.data})
+    console.log(res.data)}).catch((err)=>{console.log(err)})
+  }
+
+   handlesaveinfo=(id_task,task,state,id_user)=>{
+    //  console.log(id_task)
+    //  console.log(task)
+    //  console.log(state)
+    //  console.log(id_user)
     let array_task=this.state.data_task.filter(item =>{ return item.id !== id_task})
-    axios.put(this.state.url_base+"/tasks"+id_task,{
+    axios.put(this.state.url_base+"/tasks/"+id_task,{
       task,
       user:id_user,
       status:state
-    }).then( res =>{ this.setState({data_task:[...array_task,res]})})
+    }).then( res =>{ this.setState({data_task:[...array_task,res.data]})})
     .catch((err)=>console.log(err))
   }
 
@@ -97,8 +120,8 @@ handleCloseModal=(event)=>{
       <header className="App-header" >
         <img src={logo} alt="Logo condor" className="logo"></img>  TO DO     
       </header>
-      
-      <div className="div">
+      <div className="container">
+      <div>
           
           <Title Text={"To-Do List"}></Title>
           <Form addTask={this.handleaddtasks}></Form>
@@ -107,19 +130,27 @@ handleCloseModal=(event)=>{
           data={this.state.data_task} 
           openModal={this.handleOpenModal} 
           idSelected={this.handleTaskSelected}
-          data_user={this.state.data_user}></List> 
+          data_user={this.state.data_user}
+          handleState={this.handleShowState}></List> 
 
       </div>
+      <div>
+        <Title Text={"Search Task"}></Title>
+        <Search search={this.handlesearch}></Search>
+        <List type={"task"} data={this.state.array_search_task} data_user={this.state.data_user}></List>
+      </div>
 
-      <div className="child_div">
+      <div>
           <Title Text={"Users"}></Title>
           <FormUser addUser={this.handleaddusers}></FormUser>
           <List type={"user"} data={this.state.data_user} ></List>
+      </div>
       </div>
       {
         this.state.modalvisible &&
         <ModalContainer>
           <Modal 
+            handleSave={this.handlesaveinfo}
             modalClose={this.handleCloseModal} 
             task_selected={this.state.task_object_modal}
             data_user={this.state.data_user}
