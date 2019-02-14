@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 
 // in this component the tasks are created
 
@@ -29,8 +30,8 @@ class Form extends React.Component {
     render(){
         return (
         <div>
-            <input ref= {input=> this.input= input} placeholder="ADD TASK" onChange={this.handlestate}/>
-            <button onClick={this.handleaddtask}>Add</button>
+            <input style={{width:'60%', height:40, marginBottom:10}} ref= {input=> this.input= input} placeholder="ADD TASK" onChange={this.handlestate}/>
+            <Button style={{width:'20%'}} variant="warning" onClick={this.handleaddtask}>Add</Button>
         </div>
         )};
 }

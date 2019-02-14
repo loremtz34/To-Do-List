@@ -23,7 +23,7 @@
   background-color: #fdcd07;
   min-height: 100px;
   display: flex;
-  flex-direction: row;
+  width:100%;
   align-items: initial;
   justify-content: center;
   font-size: 100px;
@@ -51,7 +51,17 @@
 
   margin-left: 100px;
 }
+
 .row {
   margin-left: -15px;
   margin-right: -15px;
+}
+
+.modaltext{
+  text-transform:uppercase;
+  width: 200px;
+}
+
+.modalinput{
+  width: 300px;
 }

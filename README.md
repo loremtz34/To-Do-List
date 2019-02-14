@@ -49,7 +49,7 @@ var connection = mysql.createConnection({
 ### Database
 
 Connect to your database server using whichever tool you like the most, I'm using phpmyadmin. Then, create a new database called `to-do-list` and import the `to-do-list.sql` file. This will create our tables and fill them with sample data.
-
+For this aplication i used a database that have two tables, users and task. the users table have an id and a name, the task table have an id of task, a task, a user and a status (for the estatus i used id for every state in this way: 1: Open, 2: In-Progress, 3:Completed, 4:Archived)
 ## Running
 
 Finally, run the backend using `node server.js`.

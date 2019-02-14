@@ -1,5 +1,6 @@
 import React from 'react';
 import '../app.css';
+import {Button} from 'react-bootstrap';
 
 
 class Modal extends React.Component{
@@ -53,14 +54,19 @@ class Modal extends React.Component{
     render(){
     return(
         <div className="Modal">
-        <h1>id {this.props.task_selected.id} </h1>
+        <h2 style={{textAlign:'center', marginBottom:20}}> EDIT USER </h2>
         <div>
-            <label>Change task name: </label>
-            <input type="text" onChange={this.handleSelectChangeTask} placeholder={this.props.task_selected.task}/>
+            <label className="modaltext">Change task name: </label>
+            <input 
+            type="text" 
+            onChange={this.handleSelectChangeTask} 
+            placeholder={this.props.task_selected.task}
+            className="modalinput"/>
         </div><br></br>
         <div>
-            <label>Add User: </label>
-            <select  
+            <label className="modaltext">Add User: </label>
+            <select
+            className="modalinput"  
             name="2" 
             onClick={this.handleSelectChangeUser}
             defaultValue={""+(this.props.task_selected.user? this.props.task_selected.user : "1")}>
@@ -73,8 +79,9 @@ class Modal extends React.Component{
             </select>
         </div><br></br>
         <div>
-            <label>Edit State: </label>
-            <select 
+            <label className="modaltext">Edit State: </label>
+            <select
+            className="modalinput" 
             name="OS" 
             onClick={this.handleSelectChangeState}
             defaultValue={(this.props.task_selected.state? this.props.task_selected.state : 1)}>
@@ -84,8 +91,17 @@ class Modal extends React.Component{
                 <option value={4}>Archived</option>
             </select>
             </div><br></br>
-        <button onClick={this.handleSave} >Save</button>
-        <button onClick={this.props.modalClose}>Close</button>
+            <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                <Button 
+                variant="warning" 
+                onClick={this.handleSave} 
+                style={{marginRight:16}}>Save </Button>
+                <Button 
+                variant="warning" 
+                onClick={this.props.modalClose}
+                style={{marginRight:16}}>Close </Button>
+            </div>
+        
         </div>
     )};
 }

@@ -9,7 +9,7 @@ class Search extends React.Component{
     render(){
         return (
         <div>
-            <input placeholder="Search task" onChange={this.result}></input>
+            <input style={{width:'80%', height:40, marginBottom:10}} placeholder="Search task" onChange={this.result}></input>
         </div>
         )};
 }

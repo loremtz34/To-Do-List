@@ -1,3 +1,4 @@
+import {Button} from 'react-bootstrap';
 import React from 'react';
 
 // in this component the tasks are created
@@ -29,8 +30,10 @@ class FormUser extends React.Component {
     render(){
         return (
         <div>
-            <input ref= {input=> this.input= input} placeholder="ADD USER" onChange={this.handleuser}/>
-            <button onClick={this.handleadduser}>Add</button>
+            <input
+            style={{width:'60%', height:40, marginBottom:10}} 
+            ref= {input=> this.input= input} placeholder="ADD USER" onChange={this.handleuser}/>
+            <Button style={{width:'20%'}} variant="warning" onClick={this.handleadduser}>Add</Button>
         </div>
         )};
 }

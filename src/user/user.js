@@ -1,10 +1,11 @@
 import React from 'react';
+import {Card} from 'react-bootstrap';
 
 const User =(props)=>{
     return(
-        <div>
+        <Card style={{width:'80%'}}>
             <p>{props.item.name}</p>
-        </div>
+        </Card>
     )
 } 
 export default User;
