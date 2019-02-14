@@ -54,17 +54,26 @@ class App extends Component { //Main class
   }
 
    handlesaveinfo=(id_task,task,state,id_user)=>{
-    //  console.log(id_task)
-    //  console.log(task)
-    //  console.log(state)
-    //  console.log(id_user)
-    let array_task=this.state.data_task.filter(item =>{ return item.id !== id_task})
+     console.log(task);
+    let aux_array=[];
     axios.put(this.state.url_base+"/tasks/"+id_task,{
       task,
       user:id_user,
       status:state
-    }).then( res =>{ this.setState({data_task:[...array_task,res.data]})})
+    }).then( res =>{ 
+      this.state.data_task.map(item =>{
+        if(item.id === res.data[0].id){
+          aux_array.push(res.data[0])
+          return ""
+        }else{
+          aux_array.push(item)
+          return""
+        }
+      })
+      this.setState({data_task:aux_array})})
     .catch((err)=>console.log(err))
+
+    
   }
 
  handleaddtasks = (task)=>{
@@ -137,7 +146,12 @@ handleCloseModal=(event)=>{
       <div>
         <Title Text={"Search Task"}></Title>
         <Search search={this.handlesearch}></Search>
-        <List type={"task"} data={this.state.array_search_task} data_user={this.state.data_user}></List>
+        <List 
+          type={"task"}
+          openModal={this.handleOpenModal}  
+          handleState={this.handleShowState} 
+          data={this.state.array_search_task} 
+          data_user={this.state.data_user}></List>
       </div>
 
       <div>

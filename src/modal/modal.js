@@ -21,9 +21,16 @@ class Modal extends React.Component{
 
       
     handleSelectChangeTask = (event) => {
-        this.setState({
-          result_task: event.target.value
-        })
+        if(!event.target.value.localeCompare("")){
+            this.setState({result_task:event.target.placeholder})
+            console.log("ENTRO1")
+        }else{
+            this.setState({
+            result_task: event.target.value
+            })
+            console.log("Entro2")
+        }
+
        // console.log(this.state.result_task)
       }
 

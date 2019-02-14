@@ -12,7 +12,7 @@ const Task =(props)=>{
                 }
                 return ""
                 }
-            ) : "No asignado" }</p>
+            ) : "Not asigned" }</p>
             <p>{props.handleState(props.item.status)}</p>
             <button onClick={() => props.openModal(props.item.id)}>Edit</button>
         </div>
